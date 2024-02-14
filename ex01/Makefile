@@ -1,4 +1,4 @@
-NAME	=	megaphone
+NAME	=	phonebook
 
 CXX		=	c++
 
@@ -8,11 +8,14 @@ SRCS		=	Contact.cpp\
 				PhoneBook.cpp\
 				main.cpp\
 
+INCS		=	Contact.hpp\
+				PhoneBook.hpp\
+
 OBJS	=	$(SRCS:.cpp=.o)
 
 all:	$(NAME)
 
-$(NAME)	: $(OBJS)
+$(NAME)	: $(OBJS) $(INCS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.cpp

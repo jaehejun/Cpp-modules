@@ -1,14 +1,14 @@
-//#include <iostream>
-//#include <string>
+// #include <iostream>
+// #include <string>
 
-//class Contact
+// class Contact
 //{
-//  private:
-//    std::string _firstName;
-//    std::string _lastName;
-//    std::string _nickname;
-//    std::string _phoneNumber;
-//    std::string _darkestSecret;
+//   private:
+//     std::string _firstName;
+//     std::string _lastName;
+//     std::string _nickname;
+//     std::string _phoneNumber;
+//     std::string _darkestSecret;
 
 //  public:
 //    // setter 함수
@@ -56,15 +56,15 @@
 //    }
 //};
 
-//class PhoneBook
+// class PhoneBook
 //{
-//  private:
-//    Contact contacts[8]; // 최대 8개의 연락처 저장
-//    int currentContact;  // 현재 연락처 수
-//  public:
-//    PhoneBook() : currentContact(0)
-//    {
-//    } // 생성자에서 currentContact를 0으로 초기화
+//   private:
+//     Contact contacts[8]; // 최대 8개의 연락처 저장
+//     int currentContact;  // 현재 연락처 수
+//   public:
+//     PhoneBook() : currentContact(0)
+//     {
+//     } // 생성자에서 currentContact를 0으로 초기화
 
 //    // 연락처 추가 함수
 //    void addContact(Contact contact)
@@ -91,10 +91,10 @@
 //    }
 //};
 
-//int main()
+// int main()
 //{
-//    PhoneBook phoneBook;
-//    std::string command;
+//     PhoneBook phoneBook;
+//     std::string command;
 
 //    while (true)
 //    {
@@ -163,91 +163,146 @@
 //    return 0;
 //}
 
-
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <string>
 
-class Contact {
-private:
+class Contact
+{
+  private:
     std::string _firstName;
     std::string _lastName;
     std::string _nickname;
     std::string _phoneNumber;
     std::string _darkestSecret;
 
-public:
-    void setFirstName(std::string fName) { _firstName = fName; }
-    void setLastName(std::string lName) { _lastName = lName; }
-    void setNickname(std::string nName) { _nickname = nName; }
-    void setPhoneNumber(std::string phoneNum) { _phoneNumber = phoneNum; }
-    void setDarkestSecret(std::string secret) { _darkestSecret = secret; }
+  public:
+    void setFirstName(std::string firstName)
+    {
+        _firstName = firstName;
+    }
+    void setLastName(std::string lastName)
+    {
+        _lastName = lastName;
+    }
+    void setNickname(std::string nickname)
+    {
+        _nickname = nickname;
+    }
+    void setPhoneNumber(std::string phoneNumber)
+    {
+        _phoneNumber = phoneNumber;
+    }
+    void setDarkestSecret(std::string darkestSecret)
+    {
+        _darkestSecret = darkestSecret;
+    }
 
-    std::string getFirstName() { return _firstName; }
-    std::string getLastName() { return _lastName; }
-    std::string getNickname() { return _nickname; }
-    std::string getPhoneNumber() { return _phoneNumber; }
-    std::string getDarkestSecret() { return _darkestSecret; }
+    std::string getFirstName()
+    {
+        return _firstName;
+    }
+    std::string getLastName()
+    {
+        return _lastName;
+    }
+    std::string getNickname()
+    {
+        return _nickname;
+    }
+    std::string getPhoneNumber()
+    {
+        return _phoneNumber;
+    }
+    std::string getDarkestSecret()
+    {
+        return _darkestSecret;
+    }
 };
 
-class PhoneBook {
-private:
+class PhoneBook
+{
+  private:
     Contact contacts[8];
-    int size;
+    int _size;
+    int _oldest;
 
-public:
-    PhoneBook() : size(0) {}
+  public:
+    PhoneBook() : _size(0), _oldest(0)
+    {
+    }
 
-    void addContact(Contact newContact) {
-        if (size < 8) {
-            contacts[size] = newContact;
-            size++;
-        } else {
-            std::cout << "PhoneBook is full.\n";
+    void addContact(Contact newContact)
+    {
+        if (_size < 8)
+        {
+            contacts[_size] = newContact;
+            _size++;
+        }
+        else
+        {
+            contacts[_oldest] = newContact;
+            _oldest++;
+            if (_oldest == 8)
+                _oldest = 0;
         }
     }
 
-    Contact* getContact(int index) {
-        if (index < 0 || index >= size) {
+    Contact *getContact(int index)
+    {
+        if (index < 0 || index >= _size)
+        {
             return nullptr;
-        } else {
+        }
+        else
+        {
             return &contacts[index];
         }
     }
 
-    int getSize() {
-        return size;
+    int getSize()
+    {
+        return _size;
     }
 };
 
-std::string formatContactField(std::string field) {
-    if (field.length() > 10) {
+std::string formatContactField(std::string field)
+{
+    if (field.length() > 10)
+    {
         return field.substr(0, 9) + ".";
-    } else {
+    }
+    else
+    {
         return field;
     }
 }
 
-int main() {
+int main()
+{
     PhoneBook phoneBook;
     std::string command;
 
-    while (true) {
+    while (true)
+    {
         std::cout << "Enter command(ADD, SEARCH, EXIT): ";
         std::cin >> command;
 
         if (std::cin.fail())
         {
-          std::cout << "Input error or EOF detected." <<std::endl;
-          std::cin.clear();
-          std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-          
-          continue;
+            std::cout << "Input error or EOF detected." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            continue;
         }
 
-        if (command == "EXIT") {
+        if (command == "EXIT")
+        {
             break;
-        } else if (command == "ADD") {
+        }
+        else if (command == "ADD")
+        {
             Contact newContact;
             std::string input;
 
@@ -272,9 +327,12 @@ int main() {
             newContact.setDarkestSecret(input);
 
             phoneBook.addContact(newContact);
-        } else if (command == "SEARCH") {
-            for (int i = 0; i < phoneBook.getSize(); i++) {
-                Contact* contact = phoneBook.getContact(i);
+        }
+        else if (command == "SEARCH")
+        {
+            for (int i = 0; i < phoneBook.getSize(); i++)
+            {
+                Contact *contact = phoneBook.getContact(i);
                 std::cout << std::setw(10) << i << "|";
                 std::cout << std::setw(10) << formatContactField(contact->getFirstName()) << "|";
                 std::cout << std::setw(10) << formatContactField(contact->getLastName()) << "|";
@@ -285,10 +343,13 @@ int main() {
             std::cout << "Enter index: ";
             std::cin >> index;
 
-            if (index < 0 || index >= phoneBook.getSize()) {
+            if (index < 0 || index >= phoneBook.getSize())
+            {
                 std::cout << "Invalid index\n";
-            } else {
-                Contact* contact = phoneBook.getContact(index);
+            }
+            else
+            {
+                Contact *contact = phoneBook.getContact(index);
 
                 std::cout << "First Name: " << contact->getFirstName() << std::endl;
                 std::cout << "Last Name: " << contact->getLastName() << std::endl;
