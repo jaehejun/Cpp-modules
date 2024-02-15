@@ -12,12 +12,12 @@ void PhoneBook::addContact(Contact newContact)
 {
     if (_capacity < 8)
     {
-        contacts[_capacity] = newContact;
+        _contacts[_capacity] = newContact;
         _capacity++;
     }
     else
     {
-        contacts[_oldestIndex] = newContact;
+        _contacts[_oldestIndex] = newContact;
         _oldestIndex++;
         if (_oldestIndex == 8)
             _oldestIndex = 0;
@@ -32,7 +32,7 @@ Contact *PhoneBook::getContact(int index)
     }
     else
     {
-        return &contacts[index];
+        return &_contacts[index];
     }
 }
 

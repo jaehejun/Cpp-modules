@@ -8,30 +8,30 @@ Contact::~Contact(void)
 {
 }
 
-void Contact::setFirstName(std::string firstName)
-{
-    _firstName = firstName;
-}
+//void Contact::setFirstName(std::string firstName)
+//{
+//    _firstName = firstName;
+//}
 
-void Contact::setLastName(std::string lastName)
-{
-    _lastName = lastName;
-}
+//void Contact::setLastName(std::string lastName)
+//{
+//    _lastName = lastName;
+//}
 
-void Contact::setNickname(std::string nickname)
-{
-    _nickname = nickname;
-}
+//void Contact::setNickname(std::string nickname)
+//{
+//    _nickname = nickname;
+//}
 
-void Contact::setPhoneNumber(std::string phoneNumber)
-{
-    _phoneNumber = phoneNumber;
-}
+//void Contact::setPhoneNumber(std::string phoneNumber)
+//{
+//    _phoneNumber = phoneNumber;
+//}
 
-void Contact::setDarkestSecret(std::string darkestSecret)
-{
-    _darkestSecret = darkestSecret;
-}
+//void Contact::setDarkestSecret(std::string darkestSecret)
+//{
+//    _darkestSecret = darkestSecret;
+//}
 
 std::string Contact::getFirstName(void)
 {
@@ -56,4 +56,29 @@ std::string Contact::getPhoneNubmer(void)
 std::string Contact::getDarkestSecret(void)
 {
     return _darkestSecret;
+}
+
+void    Contact::completeFields(void)
+{
+    std::string info;
+
+    std::cout << "Enter first name" << std::endl;
+    std::getline(std::cin, info);
+    _firstName = info;
+
+    std::cout << "Enter last name" << std::endl;
+    std::getline(std::cin, info);
+    _lastName = info;
+
+    std::cout << "Enter nickname" << std::endl;
+    std::getline(std::cin, info);
+    _nickname = info;
+
+    std::cout << "Enter phone number" << std::endl;
+    std::getline(std::cin, info);
+    _phoneNumber = info;
+
+    std::cout << "Enter darkest secret" << std::endl;
+    std::getline(std::cin, info);
+    _darkestSecret = info;
 }
