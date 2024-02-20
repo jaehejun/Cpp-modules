@@ -7,13 +7,9 @@ CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 SRCS		=	Contact.cpp\
 				PhoneBook.cpp\
 				main.cpp\
-				addContact.cpp\
-				searchContact.cpp\
 
 INCS		=	Contact.hpp\
 				PhoneBook.hpp\
-				addContact.hpp\
-				searchContact.hpp\
 
 OBJS	=	$(SRCS:.cpp=.o)
 

@@ -64,21 +64,46 @@ void    Contact::completeFields(void)
 
     std::cout << "Enter first name" << std::endl;
     std::getline(std::cin, info);
+    if (!info.empty()) // 빈문자열(스페이스, 탭...)이라면
+    {
+        std::cout<< "Contact can’t have empty fields" << std::endl;
+        return ;
+    }
     _firstName = info;
 
     std::cout << "Enter last name" << std::endl;
     std::getline(std::cin, info);
+    if (!info.empty())
+    {
+        std::cout<< "Contact can’t have empty fields" << std::endl;
+        return ;
+    }
     _lastName = info;
 
     std::cout << "Enter nickname" << std::endl;
     std::getline(std::cin, info);
+    if (!info.empty())
+    {
+        std::cout<< "Contact can’t have empty fields" << std::endl;
+        return ;
+    }
     _nickname = info;
 
     std::cout << "Enter phone number" << std::endl;
     std::getline(std::cin, info);
+    if (!info.empty())
+    {
+        std::cout<< "Contact can’t have empty fields" << std::endl;
+        return ;
+    }
     _phoneNumber = info;
 
     std::cout << "Enter darkest secret" << std::endl;
     std::getline(std::cin, info);
+    if (!info.empty())
+    {
+        std::cout<< "Contact can’t have empty fields" << std::endl;
+        return ;
+    }
     _darkestSecret = info;
 }
