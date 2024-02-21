@@ -7,17 +7,7 @@
 #include <iostream>
 #include <string>
 #include <cctype> //isspace
-#include <cstdio>
-
-bool	isallspace(std::string str)
-{
-	for (size_t index = 0; index < str.length(); index++)
-	{
-		if (!std::isspace(str[index]))
-			return false;
-	}
-	return true;
-}
+//#include <cstdio>
 
 int	main()
 {
@@ -38,7 +28,8 @@ int	main()
 			std::cin.clear(); // c++ stream 객체(cin)의 오류 플래그 초기화(eofbit, failbit, badbit):반환값 false로 되돌림
 			std::clearerr(stdin); // stdin 파일 스트림의 오류와 eof 초기화
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 입력 버퍼 비우기
-			std::cout << std::endl;
+			//std::cin.ignore(__LONG_LONG_MAX__, '\n'); // 입력 버퍼 비우기
+			//std::cout << std::endl;
 			continue;
 		}
 		if (str.empty())
@@ -49,6 +40,7 @@ int	main()
 		{
 			std::cerr << "ALL ISSPACE!" << std::endl;
 		}
-		std::cout << str << std::endl;
+		//std::cout << str << std::endl;
 	}
 }
+
