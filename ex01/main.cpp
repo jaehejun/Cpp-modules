@@ -14,21 +14,21 @@ std::string formatContactField(std::string field)
     }
 }
 
-void	searchContact(PhoneBook &phoneBook)
+void searchContact(PhoneBook &phoneBook)
 {
-	for (int index = 0; index < phoneBook.getCapacity(); index++)
+    for (int index = 0; index < phoneBook.getCapacity(); index++)
     {
         Contact *contact = phoneBook.getContact(index);
         std::cout << std::setw(10) << index << "|";
         std::cout << std::setw(10) << formatContactField(contact->getFirstName()) << "|";
         std::cout << std::setw(10) << formatContactField(contact->getLastName()) << "|";
         std::cout << std::setw(10) << formatContactField(contact->getNickname()) << "|" << std::endl;
-	}
+    }
 
     int index;
     std::cout << "Enter index" << std::endl;
     std::cin >> index;
-    
+
     while (std::cin.fail() == true)
     {
         std::cin.clear();
@@ -42,7 +42,6 @@ void	searchContact(PhoneBook &phoneBook)
         std::cout << "Invalid index" << std::endl;
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
     }
     else
     {
@@ -58,29 +57,35 @@ void	searchContact(PhoneBook &phoneBook)
 
 int main(void)
 {
-    PhoneBook phoneBook; 
+    PhoneBook phoneBook;
 
     while (true)
     {
-    	std::string command;
+        std::string command;
         std::cout << "Enter command(ADD, SEARCH, EXIT): " << std::endl;
         std::getline(std::cin, command);
+        if (std::cin.eof())
+        {
+            //std::clearerr(stdin);
+            std::cin.clear();
+            std::cout << std::endl;
+        }
 
-        //if (std::cin.fail() == true)
+        // if (std::cin.fail() == true)
         //{
-        //    if (std::cin.eof() == true)
-        //    {
-        //        std::cout << "EOF detected. Program exiting..." << std::endl;
-        //        break;
-        //    }
-        //    else
-        //    {
-        //        std::cerr << "Input error. Try again..." << std::endl;
-        //        std::cin.clear();
-        //        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        //    	continue ;
-        //    }
-        //}
+        //     if (std::cin.eof() == true)
+        //     {
+        //         std::cout << "EOF detected. Program exiting..." << std::endl;
+        //         break;
+        //     }
+        //     else
+        //     {
+        //         std::cerr << "Input error. Try again..." << std::endl;
+        //         std::cin.clear();
+        //         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        //     	continue ;
+        //     }
+        // }
 
         if (command == "EXIT")
         {
@@ -98,7 +103,7 @@ int main(void)
         }
         else
         {
-            continue ;
+            continue;
         }
     }
     return 0;

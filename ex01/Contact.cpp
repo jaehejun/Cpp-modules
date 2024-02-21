@@ -64,7 +64,7 @@ void    Contact::completeFields(void)
 
     std::cout << "Enter first name" << std::endl;
     std::getline(std::cin, info);
-    if (!info.empty()) // 빈문자열(스페이스, 탭...)이라면
+    if (info.empty()) // 빈문자열("")이라면
     {
         std::cout<< "Contact can’t have empty fields" << std::endl;
         return ;
@@ -73,7 +73,13 @@ void    Contact::completeFields(void)
 
     std::cout << "Enter last name" << std::endl;
     std::getline(std::cin, info);
-    if (!info.empty())
+    if (std::cin.eof())
+    {
+        //std::clearerr(stdin);
+        std::cin.clear();
+        //std::cout << std::endl;
+    }
+    if (info.empty())
     {
         std::cout<< "Contact can’t have empty fields" << std::endl;
         return ;
@@ -82,7 +88,13 @@ void    Contact::completeFields(void)
 
     std::cout << "Enter nickname" << std::endl;
     std::getline(std::cin, info);
-    if (!info.empty())
+    if (std::cin.eof())
+    {
+        //std::clearerr(stdin);
+        std::cin.clear();
+        //std::cout << std::endl;
+    }
+    if (info.empty())
     {
         std::cout<< "Contact can’t have empty fields" << std::endl;
         return ;
@@ -91,7 +103,13 @@ void    Contact::completeFields(void)
 
     std::cout << "Enter phone number" << std::endl;
     std::getline(std::cin, info);
-    if (!info.empty())
+    if (std::cin.eof())
+    {
+        //std::clearerr(stdin);
+        std::cin.clear();
+        //std::cout << std::endl;
+    }
+    if (info.empty())
     {
         std::cout<< "Contact can’t have empty fields" << std::endl;
         return ;
@@ -100,7 +118,13 @@ void    Contact::completeFields(void)
 
     std::cout << "Enter darkest secret" << std::endl;
     std::getline(std::cin, info);
-    if (!info.empty())
+    if (std::cin.eof())
+    {
+        //std::clearerr(stdin);
+        std::cin.clear();
+        //std::cout << std::endl;
+    }
+    if (info.empty())
     {
         std::cout<< "Contact can’t have empty fields" << std::endl;
         return ;
