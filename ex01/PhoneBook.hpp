@@ -1,11 +1,10 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-#include <iostream>
+#include "Contact.hpp"
 #include <cstdio>
 #include <iomanip>
-#include "Contact.hpp"
-
+#include <iostream>
 
 class PhoneBook
 {
@@ -22,12 +21,12 @@ class PhoneBook
     int getCapacity();
 
     void saveNewContact();
-	bool getInfo(std::string &info);
-	bool isAllSpace(std::string info);
+    bool getInfo(std::string &info);
+    bool isAllSpace(std::string info);
 
     void displayContact();
-	std::string displayFormat(std::string field);
-	bool getIndex(int &searchIndex);
+    std::string displayFormat(std::string field);
+    bool getIndex(int &searchIndex);
 };
 
 #endif

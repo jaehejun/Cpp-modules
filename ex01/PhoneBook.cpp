@@ -77,7 +77,6 @@ bool PhoneBook::getInfo(std::string &info)
     std::getline(std::cin, info);
     if (std::cin.fail())
     {
-        std::cout << "##INFO FAIL##" << std::endl;
         std::cin.clear();
         std::clearerr(stdin);
         return false;
@@ -119,18 +118,7 @@ void PhoneBook::displayContact()
     std::cout << "Nickname: " << _contacts[searchIndex].getNickname() << std::endl;
     std::cout << "Phone Number: " << _contacts[searchIndex].getPhoneNubmer() << std::endl;
     std::cout << "Darkest Secret: " << _contacts[searchIndex].getDarkestSecret() << std::endl;
-    std::cin.ignore(1000, '\n');
 }
-
-// 저장된 연락처 index/fname/lname/nname 4개 열로 구성된 목록으로 표시
-// 각 열은 10자리의 너비
-// 각 열은 파이프 문자로 구분
-// 텍스트는 오른쪽 정렬
-// 텍스트가 열보다 길면(>10) 9글자  + '.'
-
-// 그다음 표시할 항목의 인덱스를 사용자에게 다시 요청
-//  인덱스 범위 벗어나거나 잘못된 경우 -> 적절한 동작 정의
-//  유효 인덱스 -> 연락처 정보를 한 줄에 한 필드씩 표시
 
 std::string PhoneBook::displayFormat(std::string field)
 {
@@ -147,21 +135,25 @@ std::string PhoneBook::displayFormat(std::string field)
 bool PhoneBook::getIndex(int &searchIndex)
 {
     std::cin >> searchIndex;
+    std::cin.ignore(1000, '\n');
+
     if (std::cin.fail())
     {
         if (!std::cin.eof())
         {
-            std::cout << "Enter a number!" << std::endl;
+            std::cout << "Not a number!" << std::endl;
+            std::cin.clear();
             std::cin.ignore(1000, '\n');
         }
         std::cin.clear();
         std::clearerr(stdin);
         return false;
     }
+
     if (searchIndex >= _capacity)
     {
         std::cout << "Invalid index!" << std::endl;
-        std::cin.ignore(1000, '\n');
+        //std::cin.ignore(1000, '\n'); // 버퍼 비워서 개행문자 지움(invalid index + '\n' 입력했기 때문에)
         return false;
     }
     return true;

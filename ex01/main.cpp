@@ -25,7 +25,6 @@ int main()
         std::getline(std::cin, command);
         if (std::cin.fail())
         {
-			std::cout << "@@@FAIL@@@" << std::endl;
             std::cin.clear();
 			//c++ stream객체(cin)의 오류 플래그 초기화(eofbit,failbit,badbit):반환값 true->false로 초기화
             std::clearerr(stdin);
@@ -36,17 +35,16 @@ int main()
         }
         if (command == "EXIT")
             break;
-        else if (command == "ADD") // save a new contact
+        else if (command == "ADD")
         {
             myPhoneBook.saveNewContact();
         }
-        else if (command == "SEARCH") // display a specific contact
+        else if (command == "SEARCH")
         {
             myPhoneBook.displayContact();
         }
         else
             continue;
-		//std::cin.ignore(1000, '\n');
     }
     return 0;
 }
