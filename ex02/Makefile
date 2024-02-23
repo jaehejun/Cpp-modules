@@ -1,4 +1,4 @@
-NAME	=	account
+NAME	=	account_log
 
 CXX		=	c++
 

@@ -1,6 +1,7 @@
 #include "Account.hpp"
 #include <iostream>
 #include <ctime>
+#include <iomanip>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -100,8 +101,15 @@ void Account::displayAccountsInfos(void)
 
 void Account::_displayTimestamp(void)
 {
-	std::time_t currentTime = std::time(nullptr);
-	std::string timeString = std::ctime(&currentTime);
+	std::time_t time = std::time(nullptr);
+	struct tm *now = std::localtime(&time);
 
-	std::cout << "[" << timeString << "] ";
+	std::cout << "[";
+	std::cout << now->tm_year + 1900;
+	std::cout << std::setw(2) << std::setfill('0') << now->tm_mon + 1;
+	std::cout << std::setw(2) << std::setfill('0') << now->tm_mday;
+	std::cout << "_";
+	std::cout << std::setw(2) << std::setfill('0') << now->tm_hour;
+	std::cout << std::setw(2) << std::setfill('0') << now->tm_min;
+	std::cout << std::setw(2) << std::setfill('0') << now->tm_sec << "] ";
 }
