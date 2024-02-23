@@ -17,9 +17,9 @@ class PhoneBook
     PhoneBook(void);
     ~PhoneBook(void);
 
+    void setContacts(Contact newContact);
     Contact getContact(int index);
-    int getCapacity();
-
+    
     void saveNewContact();
     bool getInfo(std::string &info);
     bool isAllSpace(std::string info);

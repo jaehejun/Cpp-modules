@@ -23,16 +23,30 @@ int main()
         std::string command;
 
         std::getline(std::cin, command);
-        if (std::cin.fail())
+        //if (std::cin.fail())
+        //{
+        //    std::cin.clear();
+		//	//c++ stream객체(cin)의 오류 플래그 초기화(eofbit,failbit,badbit):반환값 true->false로 초기화
+        //    std::clearerr(stdin);
+		//	//stdin 파일 스트림의 오류와 eof 초기화
+        //    //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		//	//입력 버퍼 비우기
+        //    continue;
+        //}
+
+        if (std::cin.eof()) // EOF(ctrl+d 입력되면 true 반환됨)
         {
-            std::cin.clear();
-			//c++ stream객체(cin)의 오류 플래그 초기화(eofbit,failbit,badbit):반환값 true->false로 초기화
+             // 문자 + ctrl+d 입력된 경우
+            if (!std::cin.fail())
+            {
+                std::cout << std::endl;
+            }
+            // ctrl+d 만 입력된 경우
+            std::cin.clear();    
             std::clearerr(stdin);
-			//stdin 파일 스트림의 오류와 eof 초기화
-            //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			//입력 버퍼 비우기
             continue;
         }
+        
         if (command == "EXIT")
             break;
         else if (command == "ADD")
