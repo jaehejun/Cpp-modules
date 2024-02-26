@@ -2,9 +2,14 @@
 
 Zombie *zombieHorde(int N, std::string name)
 {
-    Zombie *zombies = new Zombie[N];
-    for (int i = 0; i < N; i++)
-        zombies[i].name = name;
+    Zombie *zombieHorde = new (std::nothrow) Zombie[N];
+    if (zombieHorde == NULL)
+    {
+        std::cout << "Failed to allocate memory!" << std::endl;
+        return NULL;
+    }
+    for (int index = 0; index < N; index++)
+        zombieHorde[index].setName(name);
 
-    return zombies;
+    return zombieHorde;
 }

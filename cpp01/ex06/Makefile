@@ -1,4 +1,4 @@
-NAME	=	ex06
+NAME	=	harlFilter
 
 CXX		=	c++
 

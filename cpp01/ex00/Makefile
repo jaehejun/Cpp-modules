@@ -1,4 +1,4 @@
-NAME	=	myZombie
+NAME	=	BraiiiiiiinnnzzzZ
 
 CXX		=	c++
 

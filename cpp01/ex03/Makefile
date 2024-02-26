@@ -1,12 +1,17 @@
-NAME	=	ex03
+NAME	=	Violence
 
 CXX		=	c++
 
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 SRCS		=	main.cpp\
+				Weapon.cpp\
+				HumanA.cpp\
+				HumanB.cpp\
 
-INCS		=	
+INCS		=	Weapon.hpp\
+				HumanA.hpp\
+				HumanB.hpp\
 
 OBJS	=	$(SRCS:.cpp=.o)
 
