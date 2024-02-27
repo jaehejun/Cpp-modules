@@ -1,12 +1,13 @@
-NAME	=	ex04
+NAME	=	Replace
 
 CXX		=	c++
 
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 SRCS		=	main.cpp\
+				Replace.cpp
 
-INCS		=	
+INCS		=	Replace.hpp\
 
 OBJS	=	$(SRCS:.cpp=.o)
 
