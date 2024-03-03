@@ -1,4 +1,4 @@
-NAME	=	ex02
+NAME	=	a.out
 
 CXX		=	c++
 
