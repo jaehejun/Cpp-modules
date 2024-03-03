@@ -4,11 +4,15 @@
 void replaceString(std::string filename, std::string s1, std::string s2)
 {
     std::ifstream originalFile((filename).c_str());
-    std::ofstream replaceFile((filename + ".replace").c_str());
-
-    if (!originalFile.is_open() || !replaceFile.is_open())
+    if (!originalFile.is_open())
     {
         std::cerr << "Error : Failed to open file" << std::endl;
+        return;
+    }
+    std::ofstream replaceFile((filename + ".replace").c_str());
+    if (!replaceFile.is_open())
+    {
+        std::cerr << "Error : Failed to open replace file" << std::endl;
         return;
     }
 

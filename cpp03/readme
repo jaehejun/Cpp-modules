@@ -1,0 +1,23 @@
+/*
+
+CPP03 -> 
+:
+aaa(b::aaa), 
+{
+}
+
+ 임시객체 <- 어떻게 보면 대입
+
+  a
+b   c
+  d
+
+Compile -> virtual
+ex01~ ClapTrap의 멤버변수를 protected
+virtual
+-> 소멸자 virtual 필수..라고 생각하면 된다.
+
+-> diamondTrap
+-> c\
+
+*/
