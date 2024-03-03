@@ -1,36 +1,44 @@
 #include "Fixed.hpp"
 
-Fixed::static const int fractionalBits = 8;
+// 왜 static은 빼고 써야되지
+const int Fixed::fractionalBits = 8;
 
 Fixed::Fixed() : fixedPointNumberValue(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
 }
 
-copy_cons
-Fixed::Fixed(Fixed &fixed)
+// 왜 const 붙여야하지
+// subject의 출력순서를 맞추기 위해서 복사생성자에서 대입연산자 오버로딩 함수를 사용.
+Fixed::Fixed(const Fixed &fixed)
 {
-	std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Copy constructor called" << std::endl;
+	*this = fixed;
 }
 
-copy_assignmnet operator
+// 왜 자기자신을 return 해야하지
+// 복사생성자를 호출하는 것과 무슨 차이가 있지
+// 왜 const 붙여야하지
+// subject의 출력순서를 맞추기 위해서 getRawBits()메서드를 호출
+Fixed &Fixed::operator=(const Fixed &fixed)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "Copy assignment operator called" << std::endl;
+	fixedPointNumberValue = fixed.getRawBits();
+	return *this;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+    std::cout << "Destructor called" << std::endl;
 }
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
-	
-	return (raw value of the fixed-point value);
+    std::cout << "getRawBits member function called" << std::endl;
+    return (fixedPointNumberValue);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	sets the raw value of the fixed-point number
+    fixedPointNumberValue = raw;
 }
