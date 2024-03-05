@@ -3,7 +3,7 @@
 // 왜 static은 빼고 써야되지
 const int Fixed::fractionalBits = 8;
 
-Fixed::Fixed() : fixedPointNumberValue(0)
+Fixed::Fixed() : value(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }
@@ -23,7 +23,7 @@ Fixed::Fixed(const Fixed &fixed)
 Fixed &Fixed::operator=(const Fixed &fixed)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-	fixedPointNumberValue = fixed.getRawBits();
+	value = fixed.getRawBits();
 	return *this;
 }
 
@@ -35,10 +35,10 @@ Fixed::~Fixed()
 int Fixed::getRawBits(void) const
 {
     std::cout << "getRawBits member function called" << std::endl;
-    return (fixedPointNumberValue);
+    return (value);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-    fixedPointNumberValue = raw;
+    value = raw;
 }
