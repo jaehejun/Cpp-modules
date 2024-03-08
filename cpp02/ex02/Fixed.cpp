@@ -55,13 +55,6 @@ Fixed &Fixed::operator=(const Fixed &fixed)
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &outStream, const Fixed &fixed)
-{
-    float printNumber = fixed.toFloat();
-    outStream << printNumber;
-    return outStream;
-}
-
 // 6개의 비교 연산자 오버로딩
 bool Fixed::operator>(const Fixed &other) const
 {
@@ -140,7 +133,7 @@ Fixed Fixed::operator--(int)
 }
 
 // 정적 멤버 함수 min/max 오버로딩
-const Fixed& Fixed::min(Fixed &a, Fixed &b)
+Fixed& Fixed::min(Fixed &a, Fixed &b)
 {
     return a.fixedValue < b.fixedValue ? a : b;
 }
@@ -148,11 +141,19 @@ const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
 {
     return a.fixedValue < b.fixedValue ? a : b;
 }
-const Fixed& Fixed::max(Fixed &a, Fixed &b)
+Fixed& Fixed::max(Fixed &a, Fixed &b)
 {
     return a.fixedValue > b.fixedValue ? a : b;
 }
 const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
 {
     return a.fixedValue > b.fixedValue ? a : b;
+}
+
+// operator <<
+std::ostream &operator<<(std::ostream &outStream, const Fixed &fixed)
+{
+    float printNumber = fixed.toFloat();
+    outStream << printNumber;
+    return outStream;
 }

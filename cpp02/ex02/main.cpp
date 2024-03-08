@@ -12,23 +12,6 @@ int main(void)
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     std::cout << Fixed::max(a, b) << std::endl;
-
-
-
-    //Fixed a(20.0f);
-    //Fixed b(10);
-
-    //std::cout << (a > b) << std::endl;
-    //std::cout << (a < b) << std::endl;
-    //std::cout << (a != b) << std::endl;
-    //std::cout << (a >= b) << std::endl;
-    //std::cout << (a <= b) << std::endl;
-    //std::cout << (a == b) << std::endl;
-    //std::cout << (a != b) << std::endl;
-    //std::cout << (a + b) << std::endl;
-    //std::cout << (a - b) << std::endl;
-    //std::cout << (a * b) << std::endl;
-    //std::cout << (a / b) << std::endl;
     return 0;
 }
 
