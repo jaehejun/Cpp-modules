@@ -10,27 +10,22 @@ Fixed::Fixed() : fixedValue(0)
 Fixed::Fixed(const int intNum) : fixedValue(intNum << fractionalBits)
 {
     std::cout << "Int constructor called" << std::endl;
-    std::cout << this << ": " << fixedValue << std::endl;
 }
 
 Fixed::Fixed(const float floatNum) : fixedValue(roundf(floatNum * (1 << fractionalBits)))
 {
     std::cout << "Float constructor called" << std::endl;
-    std::cout << this << ": " << fixedValue << std::endl;
 }
 
 Fixed::Fixed(const Fixed &fixed)
 {
     std::cout << "Copy constructor called" << std::endl;
     fixedValue = fixed.getRawBits();
-    std::cout << this << ": " << fixed.getRawBits() << std::endl;
-    std::cout << "copied: " << &fixed << std::endl;
 }
 
 Fixed::~Fixed()
 {
     std::cout << "Destructor called" << std::endl;
-    std::cout << this << ": " << fixedValue << std::endl;
 }
 
 int Fixed::getRawBits(void) const
@@ -108,12 +103,8 @@ Fixed Fixed::operator-(const Fixed &other) const
 }
 Fixed Fixed::operator*(const Fixed &other) const
 {
-    std::cout << "OPERATOR BEGIN" << std::endl;
     Fixed result;
     result.fixedValue = (fixedValue * other.fixedValue) >> fractionalBits;
-    std::cout << result.fixedValue << std::endl;
-    std::cout << "OPERATOR ENDSS" << std::endl;
-    std::cout << "RESULT: " << &result << std::endl;
     return result;
 }
 Fixed Fixed::operator/(const Fixed &other) const
@@ -122,33 +113,44 @@ Fixed Fixed::operator/(const Fixed &other) const
     result.fixedValue = (fixedValue << fractionalBits) / other.fixedValue;
     return result;
 }
+
+
 // 4개의 증가/감소 연산자 오버로딩
 Fixed& Fixed::operator++()
 {
-    fixedValue += 1 << fractionalBits;
+    fixedValue += 1;
     return *this;
 }
-//Fixed Fixed::operator++(int)
-//{
-//    Fixed temp(*this);
-//    fixedValue += 1 << fractionalBits;
-//    return temp;
-//}
+Fixed Fixed::operator++(int)
+{
+    Fixed temp(*this);
+    fixedValue += 1;
+    return temp;
+}
 Fixed &Fixed::operator--()
 {
-    fixedValue -= 1 << fractionalBits;
+    fixedValue -= 1;
     return *this;
 }
-//Fixed Fixed::operator--(int)
-//{
-//    Fixed temp(*this);
-//    fixedValue -= 1 << fractionalBits;
-//    return temp;
-//}
+Fixed Fixed::operator--(int)
+{
+    Fixed temp(*this);
+    fixedValue -= 1;
+    return temp;
+}
+
 // 정적 멤버 함수 min/max 오버로딩
+const Fixed& Fixed::min(Fixed &a, Fixed &b)
+{
+    return a.fixedValue < b.fixedValue ? a : b;
+}
 const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
 {
     return a.fixedValue < b.fixedValue ? a : b;
+}
+const Fixed& Fixed::max(Fixed &a, Fixed &b)
+{
+    return a.fixedValue > b.fixedValue ? a : b;
 }
 const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
 {

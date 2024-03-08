@@ -2,7 +2,7 @@ NAME	=	a.out
 
 CXX		=	c++
 
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++11 -fno-elide-constructors
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 SRCS		=	main.cpp\
 				Fixed.cpp\

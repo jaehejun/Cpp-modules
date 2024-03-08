@@ -2,7 +2,6 @@
 #define FIXED_HPP
 
 #include <iostream>
-#include <string>
 #include <cmath>
 
 class Fixed
@@ -41,12 +40,14 @@ class Fixed
 
   // 증감 연산자 오버로딩
     Fixed& operator++();
-    //Fixed& operator++(int);
+    Fixed operator++(int);
     Fixed& operator--();
-    //Fixed& operator--(int);
+    Fixed operator--(int);
 
   // 정적 멤버 함수 min/max 오버로딩
+    static const Fixed& min(Fixed& a, Fixed& b);
     static const Fixed& min(const Fixed& a, const Fixed& b);
+    static const Fixed& max(Fixed& a, Fixed& b);
     static const Fixed& max(const Fixed& a, const Fixed& b);
 };
 
