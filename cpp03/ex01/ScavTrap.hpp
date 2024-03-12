@@ -11,14 +11,43 @@
 // ScavTrap will have own special capacity : void guardGate();
 // this will display message informing that ScavTrap is now in Gate keeper mode
 
+//class ClapTrap
+//{
+//	private:
+//		std::string name;
+//		int hitPoints;
+//		unsigned int energyPoints;
+//		unsigned int attackDamage;
+//		ClapTrap();
+
+//	public:
+//		ClapTrap(std::string name);
+//		ClapTrap(const ClapTrap& clapTrap);
+//		~ClapTrap();
+
+//		ClapTrap &operator=(const ClapTrap &clapTrap);
+
+//		void attack(const std::string& target);
+//		void takeDamage(unsigned int amount);
+//		void beRepaired(unsigned int amount);
+
+//};
+
+
 #include "ClapTrap.hpp"
 
 class ScavTrap: protected ClapTrap
 {
 	private:
-		int a;
-	
+		ScavTrap();
 	public:
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap& scavTrap);
+		~ScavTrap();
+
+		ScavTrap& operator=(const ScavTrap& scavTrap);
+
+		void attack(const std::string& target);
 		void guardGate();
 };
 

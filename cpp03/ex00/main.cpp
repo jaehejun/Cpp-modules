@@ -5,6 +5,9 @@ int main()
 	ClapTrap a("A");
 	ClapTrap b("B");
 
+	ClapTrap c(a);
+	//ClapTrap d(e);
+
 	a.attack("B");
 	b.takeDamage(9);
 	b.beRepaired(1);
