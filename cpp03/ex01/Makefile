@@ -2,7 +2,7 @@ NAME	=	ScavTrap
 
 CXX		=	c++
 
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -Wshadow
 
 SRCS		=	main.cpp\
 				ClapTrap.cpp\
@@ -18,7 +18,7 @@ all:	$(NAME)
 $(NAME)	: $(OBJS) $(INCS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp $(INCS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

@@ -5,11 +5,11 @@ int main()
 {
 	FragTrap a("A");
 	a.highFivesGuys();
-	//a.takeDamage(10);
-	a.highFivesGuys();
+	a.takeDamage(10);
 	
 	FragTrap b("B");
 	b.highFivesGuys();
+	b.attack("BATTACK WHO");
 	
 	FragTrap c = a;
 	//FragTrap c(a);
