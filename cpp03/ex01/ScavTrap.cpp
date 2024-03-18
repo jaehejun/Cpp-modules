@@ -15,6 +15,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::~ScavTrap()
 {
+	// delete memory
 	std::cout << "Destructor called from ScavTrap " << name << std::endl;
 }
 

@@ -23,10 +23,13 @@ ClapTrap::~ClapTrap()
 ClapTrap& ClapTrap::operator=(const ClapTrap& clapTrap)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	name = clapTrap.name;
-	hitPoints = clapTrap.hitPoints;
-	energyPoints = clapTrap.energyPoints;
-	attackDamage = clapTrap.attackDamage;
+	if (this != &clapTrap)
+	{
+		name = clapTrap.name;
+		hitPoints = clapTrap.hitPoints;
+		energyPoints = clapTrap.energyPoints;
+		attackDamage = clapTrap.attackDamage;
+	}
 	return *this;
 }
 

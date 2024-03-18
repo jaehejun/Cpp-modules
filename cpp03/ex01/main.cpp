@@ -1,12 +1,59 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
+void Cry(Animal* animal)
+{
+ 	animal->cry();
+}
+
+void Cry(Dog* dog)
+{
+ 	dog->cry();
+}
+
+void Cry(Cat* cat)
+{
+ 	cat->cry();
+}
+
+class Animal
+{
+	cry()
+	{
+		"CRY"
+	}
+}
+
+class Cat
+{
+	cry()
+	{
+		"meow"
+	}
+}
+
 int main()
 {
-	ClapTrap* a = new ScavTrap("A");
+
+	Animal *a = new Cat("cat"); 
+	Animal *b = new Dog("dog"); 
+	Animal *c = new hotdug("hyung"); 
+
+	Cry(a);
+
+
+	a->cry;  meow
+	b->cry;  bark
+	c->cry;  yammy
+
+	cat.cry
+	dog.cry
+	hotdog.cry
+
+	//ClapTrap* a = new ScavTrap("A");
 	
-	a->attack("ATTACK");
-	delete a;
+	//a->attack("ATTACK");
+	//delete a;
 
 	//ScavTrap a("A");
 	//a.guardGate();
