@@ -1,5 +1,7 @@
 #include "ScavTrap.hpp"
 
+const unsigned int ScavTrap::scavEnergyPoints = 50;
+
 ScavTrap::ScavTrap()
 {
 	std::cout << "Default constructor called from ScavTrap" << std::endl;

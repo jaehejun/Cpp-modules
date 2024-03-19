@@ -18,15 +18,18 @@ FragTrap::~FragTrap()
 	std::cout << "Destructor called from FragTrap " << name << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap& FragTrap) : ClapTrap(FragTrap)
+FragTrap::FragTrap(const FragTrap& fragTrap) : ClapTrap(fragTrap)
 {
 	std::cout << "Copy constructor called with FragTrap " << name << std::endl;
 }
 
-FragTrap& FragTrap::operator=(const FragTrap& FragTrap)
+FragTrap& FragTrap::operator=(const FragTrap& fragTrap)
 {
-	ClapTrap::operator=(FragTrap);
 	std::cout << "Copy assignment operator called with FragTrap " << name << std::endl;
+	if (this != &fragTrap)
+	{
+		ClapTrap::operator=(fragTrap);
+	}
 	return *this;
 }
 

@@ -3,11 +3,12 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
-	private:
+	protected:
 		ScavTrap();
 	public:
+		static const unsigned int scavEnergyPoints;
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap& scavTrap);
 		~ScavTrap();

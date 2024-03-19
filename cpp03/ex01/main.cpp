@@ -1,82 +1,92 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-void Cry(Animal* animal)
-{
- 	animal->cry();
-}
-
-void Cry(Dog* dog)
-{
- 	dog->cry();
-}
-
-void Cry(Cat* cat)
-{
- 	cat->cry();
-}
-
-class Animal
-{
-	cry()
-	{
-		"CRY"
-	}
-}
-
-class Cat
-{
-	cry()
-	{
-		"meow"
-	}
-}
-
 int main()
 {
+	ScavTrap a("A");
+	a.guardGate();
 
-	Animal *a = new Cat("cat"); 
-	Animal *b = new Dog("dog"); 
-	Animal *c = new hotdug("hyung"); 
-
-	Cry(a);
+	ScavTrap b("B");
+	b.guardGate();
 
 
-	a->cry;  meow
-	b->cry;  bark
-	c->cry;  yammy
+	b.attack("A");
+	a.takeDamage(20);
+	b.attack("A");
+	a.takeDamage(20);
+	b.attack("A");
+	a.takeDamage(20);
+	b.attack("A");
+	a.takeDamage(20);
 
-	cat.cry
-	dog.cry
-	hotdog.cry
+	ScavTrap c("C");
+	c = a;
+	c.guardGate();
+	ScavTrap d(c);
+	d.guardGate();
 
-	//ClapTrap* a = new ScavTrap("A");
+	b.attack("C");
+	c.takeDamage(20);
+	b.attack("C");
+	c.takeDamage(20);
+
+	b.attack("D");
+	d.takeDamage(20);
+	b.attack("D");
+	d.takeDamage(20);
+
+	a.beRepaired(20);
 	
-	//a->attack("ATTACK");
-	//delete a;
+	b.attack("A");
+	a.takeDamage(20);
+	b.attack("A");
+	a.takeDamage(20);
 
-	//ScavTrap a("A");
-	//a.guardGate();
-	//a.attack("B");
-	////a.takeDamage(10);
-	//a.guardGate();
-
-	//ScavTrap b("B");
-	//b.guardGate();
+	a.beRepaired(20);
 	
-	//ScavTrap c = a;
-	//c = b;
-	////ScavTrap c(a);
-	//c.attack("CATTA");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
+	b.attack("A");
 
-	//ScavTrap d("D");
-	//d = b;
-	//d.attack("DATTB");
-	////d.takeDamage(100);
-	////d.beRepaired(100);
 
-	//ScavTrap z(d);
-	//z.attack("Z");
-	
 	return 0;
 }

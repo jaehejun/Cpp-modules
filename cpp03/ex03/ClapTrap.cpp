@@ -7,12 +7,12 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
-    std::cout << "Constructor called from " << name << std::endl;
+    std::cout << "Constructor called from ClapTrap " << name << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &clapTrap) : name(clapTrap.name), hitPoints(clapTrap.hitPoints), energyPoints(clapTrap.energyPoints), attackDamage(clapTrap.attackDamage)
 {
-    std::cout << "Copy constructor called with " << name << std::endl;
+    std::cout << "Copy constructor called with ClapTrap " << name << std::endl;
 }
 
 ClapTrap::~ClapTrap()
@@ -22,11 +22,14 @@ ClapTrap::~ClapTrap()
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &clapTrap)
 {
-    std::cout << "Copy assignment operator called with " << clapTrap.name << std::endl;
-    name = clapTrap.name;
-    hitPoints = clapTrap.hitPoints;
-    energyPoints = clapTrap.energyPoints;
-    attackDamage = clapTrap.attackDamage;
+    std::cout << "Copy assignment operator called with ClapTrap " << clapTrap.name << std::endl;
+    if (this != &clapTrap)
+    {
+        name = clapTrap.name;
+        hitPoints = clapTrap.hitPoints;
+        energyPoints = clapTrap.energyPoints;
+        attackDamage = clapTrap.attackDamage;
+    }
     return *this;
 }
 
@@ -42,7 +45,7 @@ void ClapTrap::attack(const std::string &target)
         std::cout << "ClapTrap " << name << " has not enough energy points for attacking!" << std::endl;
         return;
     }
-    std::cout << "ClapTrap " << name << " attacks " << target << ", casuing " << attackDamage << " points of damage!"
+    std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!"
               << std::endl;
     energyPoints -= 1;
 }
