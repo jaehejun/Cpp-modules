@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(const ClapTrap &clapTrap) : name(clapTrap.name), hitPoints(cl
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Destructor called from " << name << std::endl;
+    std::cout << "Destructor called from ClapTrap " << name << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &clapTrap)

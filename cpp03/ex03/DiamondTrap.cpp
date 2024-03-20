@@ -13,12 +13,9 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 	attackDamage = FragTrap::fragAttackDamage;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& diamondTrap) : ClapTrap(diamondTrap.name + "_clap_name"), ScavTrap(diamondTrap), FragTrap(diamondTrap), name(diamondTrap.name)
+DiamondTrap::DiamondTrap(const DiamondTrap& diamondTrap) : ClapTrap(diamondTrap), ScavTrap(diamondTrap), FragTrap(diamondTrap), name(diamondTrap.name)
 {
 	std::cout << "Copy constructor called with DiamondTrap " << name << std::endl;
-	hitPoints = FragTrap::fragHitPoints;
-	energyPoints = ScavTrap::scavEnergyPoints;
-	attackDamage = FragTrap::fragAttackDamage;
 }
 
 DiamondTrap::~DiamondTrap()
@@ -31,9 +28,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& diamondTrap)
 	std::cout << "Copy assignment operator called with DiamondTrap " << name << std::endl;
 	if (this != &diamondTrap)
 	{
-		ClapTrap::operator=(diamondTrap);
 		ScavTrap::operator=(diamondTrap);
-		FragTrap::operator=(diamondTrap);
 		name = diamondTrap.name;
 	}
 	return *this;
@@ -45,14 +40,10 @@ void DiamondTrap::whoAmI()
 	std::cout << "ClapTrap name: " << ClapTrap::name << std::endl;
 }
 
-//void DiamondTrap::attack(const std::string& target)
-//{
-//	ScavTrap::attack(target);
-//}
-
 void DiamondTrap::show()
 {
 	std::cout << "Name: " << name << std::endl;
+	std::cout << "CLAP: " << ClapTrap::name << std::endl;
 	std::cout << "HP: " << hitPoints << std::endl;
 	std::cout << "EP: " << energyPoints << std::endl;
 	std::cout << "AD: " << attackDamage << std::endl;

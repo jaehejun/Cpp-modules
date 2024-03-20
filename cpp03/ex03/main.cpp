@@ -13,11 +13,17 @@ int main()
 	DiamondTrap b(a);
 	b.whoAmI();
 	b.show();
+	b.attack("A");
+	a.takeDamage(30);
 
 	DiamondTrap c("C");
 	c = a;
 	c.whoAmI();
 	c.show();
+	c.attack("A");
+	a.takeDamage(30);
+	a.show();
+
 
 	return 0;
 }

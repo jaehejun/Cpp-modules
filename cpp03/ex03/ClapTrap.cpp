@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap()
 {
-    std::cout << "Default Constructor called" << std::endl;
+    std::cout << "Default Constructor called from ClapTrap" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(const ClapTrap &clapTrap) : name(clapTrap.name), hitPoints(cl
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Destructor called from " << name << std::endl;
+    std::cout << "Destructor called from ClapTrap " << name << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &clapTrap)
