@@ -1,10 +1,9 @@
 #include "Animal.hpp"
 #include "Dog.hpp"
 
-Dog::Dog() : Animal(), type("Dog")
+Dog::Dog() : Animal("Dog")
 {
     std::cout << "Dog default constructor called" << std::endl;
-    //setType("Dog");
 }
 
 Dog::Dog(const Dog &other) : Animal(other)
@@ -29,5 +28,5 @@ Dog &Dog::operator=(const Dog &other)
 
 void Dog::makeSound() const
 {
-    std::cout << "Dog sound" << std::endl;
+    std::cout << "WOOF" << std::endl;
 }
