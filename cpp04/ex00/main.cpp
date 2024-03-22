@@ -41,5 +41,17 @@ int main()
 	delete j;
 	delete i;
 	delete w;
+
+
+	Dog a;
+	Dog b(a);
+	b.makeSound();
+    std::cout << b.getType() << " " << std::endl;
+	Dog c;
+	c = a;
+	c.makeSound();
+    std::cout << c.getType() << " " << std::endl;
+
+
     return 0;
 }
