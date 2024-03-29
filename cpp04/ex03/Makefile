@@ -7,10 +7,13 @@ SRCS		=	main.cpp\
 				AMateria.cpp\
 				Ice.cpp\
 				Cure.cpp\
+				Character.cpp\
 				
 INCS		=	AMateria.hpp\
 				Icd.hpp\
 				Cure.hpp\
+				ICharacter.hpp\
+				Character.hpp\
 
 OBJS	=	$(SRCS:.cpp=.o)
 

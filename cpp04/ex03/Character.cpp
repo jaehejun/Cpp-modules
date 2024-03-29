@@ -5,6 +5,11 @@ Character::Character()
 	std::cout << "Character default constructor called" << std::endl;
 }
 
+Character::Character(const std::string &name) : name(name)
+{
+	std::cout << "Character constructor called with name" << std::endl;
+}
+
 Character::Character(const Character &other) : name(other.name)
 {
 	std::Cout << "Character copy constructor called" << std::endl;
@@ -18,6 +23,7 @@ Character::~Character()
 Character &Character::operator=(const Character &other)
 {
 	std::cout << "Character assignment operator called" << std::endl;
+	name = other.name;
 }
 
 std::string const &Character::getName() const

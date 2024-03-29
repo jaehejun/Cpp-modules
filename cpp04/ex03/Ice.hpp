@@ -3,11 +3,12 @@
 
 #include "AMateria.hpp"
 
+class ICharacter;
+
 class Ice : public AMateria
 {
 	private:
-		std::string type;
-	
+		//AMateria 에서 상속받은 std::string type
 	public:
 		Ice();
 		Ice(const std::string &type);
@@ -16,7 +17,9 @@ class Ice : public AMateria
 
 		Ice &operator=(const Ice &other);
 
-		virtual Ice *clone() const;
+		//상속받은 std::string const &getType() const;
+		virtual AMateria *clone() const;
+		virtual void use(ICharacter &target);
 };
 
 #endif
