@@ -5,55 +5,28 @@
 
 int main()
 {
+    //Animal a;
+    Dog dog;
+    Cat cat;
 
-    // create and fill an array of Animal objects.
-    // half Dog obj, half Cat obj,
-    // at the end of program execution,
-    // loop over this array and delete every Animal.
-    // must delete directly dogs and cats as animals.
-    // copy of a dog/cat mustn't be shallow
-    // have to test copies are deep copies
+    std::cout << dog.getType() << std::endl;
+    dog.makeSound();
+    std::cout << cat.getType() << std::endl;
+    cat.makeSound();
 
-    // const Animal *j = new Dog();
-    // const Animal *i = new Cat();
+    dog.setIdea("Dog's idea");
+    cat.setIdea("Cat's idea");
 
-    // delete j; // should not create a leak
-    // delete i;
+    std::cout << "DOG : ";
+    dog.getIdeas();
+    std::cout << "CAT : ";
+    cat.getIdeas();
 
-    // std::cout << "@@@@@@@@@@@@@@@ More Tests @@@@@@@@@@@@@@@@" << std::endl;
+    Dog copyDog(dog);
+    copyDog.setIdea("Copy's idea");
+    std::cout << "COPY DOG : ";
+    copyDog.getIdeas();
 
-    Animal *animals[10];
-    for (int i = 0; i < 10 / 2; i++)
-    {
-        animals[i] = new Dog();
-    }
-
-    for (int i = 10 / 2; i < 10; i++)
-    {
-        animals[i] = new Cat();
-    }
-
-    for (int i = 0; i < 10; i++)
-    {
-        delete animals[i];
-    }
-
-    // std::cout << "@@@@@@@@@@@@@@@ More Tests @@@@@@@@@@@@@@@@" << std::endl;
-    // Brain a;
-    // a.setIdea("hi");
-    // a.getIdeas();
-
-    // Dog b;
-    // b.setIdea("hello");
-    // b.setIdea("bye");
-    // b.getIdeas();
-
-    // Dog copy(b);
-    // copy.setIdea("copied");
-    // copy.getIdeas();
-
-    // std::cout << "@@@@@@@@@@@ORIGINAL@@@@@@@@@@@" << std::endl;
-    // b.getIdeas();
-
-    // return 0;
+    std::cout << "OG DOG after copied : ";
+    dog.getIdeas();
 }
