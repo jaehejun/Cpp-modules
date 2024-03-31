@@ -18,6 +18,7 @@ Cure::~Cure()
 Cure &Cure::operator=(const Cure &other)
 {
 	std::cout << "Cure assignment operator called" << std::endl;
+	AMateria::operator=(other);
 }
 
 AMateria *Cure::clone() const

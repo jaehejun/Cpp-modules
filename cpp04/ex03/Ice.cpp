@@ -18,6 +18,7 @@ Ice::~Ice()
 Ice &Ice::operator=(const Ice &other)
 {
     std::cout << "Ice assignment operator called" << std::endl;
+    AMateria::operator=(other);
 }
 
 AMateria *Ice::clone() const

@@ -3,9 +3,8 @@
 
 #include <string>
 #include <iostream>
-#include "ICharater.hpp"
 
-//class ICharacter;
+class ICharacter;
 
 class AMateria
 {
