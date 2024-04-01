@@ -11,7 +11,6 @@ class Ice : public AMateria
 		//AMateria 에서 상속받은 std::string type
 	public:
 		Ice();
-		Ice(const std::string &type);
 		Ice(const Ice &other);
 		~Ice();
 

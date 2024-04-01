@@ -11,7 +11,6 @@ class Cure : public AMateria
 		//AMateria 에서 상속받은 std::string type
 	public:
 		Cure();
-		Cure(const std::string &type);
 		Cure(const Cure &other);
 		~Cure();
 

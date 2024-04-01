@@ -7,7 +7,7 @@ AMateria::AMateria()
 
 AMateria::AMateria(std::string const &type) : type(type)
 {
-    std::cout << "AMateria constructor with TYPE called" << std::endl;
+    std::cout << "AMateria constructor with [" << type << "] TYPE called" << std::endl;
 }
 
 AMateria::AMateria(const AMateria &other) : type(other.type)
@@ -23,7 +23,14 @@ AMateria::~AMateria()
 AMateria &AMateria::operator=(const AMateria &other)
 {
     std::cout << "AMateria assignment operator called" << std::endl;
-    type = other.type;
+    if (this != &other)
+    {
+        if (type != other.type)
+        {
+            std::cout << "Type doesn't match!" << std::endl;
+        }
+    }
+    return *this;
 }
 
 std::string const &AMateria::getType() const
@@ -33,8 +40,6 @@ std::string const &AMateria::getType() const
 
 void AMateria::use(ICharacter &target)
 {
-    if (target.type == ice)
-        std::cout << "* shoots an ice bolt at " << target.name << " *" << std::endl;
-    if (target.type == cure)
-        std::cout << "* heals " << target.name << "'s  wounds *" << std::endl;
+    std::cout << "AMateria use() called" << std::endl;
+    (void)target;
 }
