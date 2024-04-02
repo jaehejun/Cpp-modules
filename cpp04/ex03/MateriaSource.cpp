@@ -31,11 +31,14 @@ MateriaSource::~MateriaSource()
 MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 {
 	std::cout << "MateriaSource assignment operator called" << std::endl;
-	for (int i = 0; i < 4; i++)
+	if (this != &other)
 	{
-		if (other.materia[i])
+		for (int i = 0; i < 4; i++)
 		{
-			materia[i] = other.materia[i]->clone();
+			if (other.materia[i])
+			{
+				materia[i] = other.materia[i]->clone();
+			}
 		}
 	}
 	return *this;

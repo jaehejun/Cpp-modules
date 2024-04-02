@@ -8,12 +8,16 @@ class Character : public ICharacter
   private:
     std::string name;
     AMateria *slot[4];
+
+    static AMateria *floor[10];
+    static int floorStorage;
+    
     Character();
 
   public:
     Character(const std::string &name);
 	  Character(const Character &other);
-    ~Character();
+    virtual ~Character();
 
     Character &operator=(const Character &other);
 
@@ -21,6 +25,8 @@ class Character : public ICharacter
     virtual void equip(AMateria *m);
     virtual void unequip(int idx);
     virtual void use(int idx, ICharacter &target);
+
+    static void clearFloor();
 };
 
 #endif

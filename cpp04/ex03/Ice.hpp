@@ -3,8 +3,6 @@
 
 #include "AMateria.hpp"
 
-class ICharacter;
-
 class Ice : public AMateria
 {
 	private:
@@ -12,7 +10,7 @@ class Ice : public AMateria
 	public:
 		Ice();
 		Ice(const Ice &other);
-		~Ice();
+		virtual ~Ice();
 
 		Ice &operator=(const Ice &other);
 

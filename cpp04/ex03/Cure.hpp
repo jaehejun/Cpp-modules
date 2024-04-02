@@ -3,8 +3,6 @@
 
 #include "AMateria.hpp"
 
-class ICharacter;
-
 class Cure : public AMateria
 {
 	private:
@@ -12,7 +10,7 @@ class Cure : public AMateria
 	public:
 		Cure();
 		Cure(const Cure &other);
-		~Cure();
+		virtual ~Cure();
 
 		Cure &operator=(const Cure &other);
 

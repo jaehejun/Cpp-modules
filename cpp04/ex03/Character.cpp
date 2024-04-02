@@ -1,6 +1,10 @@
 #include "Character.hpp"
 #include "AMateria.hpp"
 
+AMateria *Character::floor[10] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
+
+int Character::floorStorage = 0;
+
 Character::Character()
 {
     std::cout << "Character default constructor called" << std::endl;
@@ -20,19 +24,29 @@ Character::Character(const Character &other) : name(other.name)
     std::cout << "Character copy constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
     {
+        delete slot[i];
+        slot[i] = NULL;
         if (other.slot[i])
+        {
             slot[i] = other.slot[i]->clone();
+        }
         else
+        {
             slot[i] = NULL;
+        }
     }
 }
 
 Character::~Character()
 {
-    std::cout << "Character name [" << name << "]default destructor called" << std::endl;
+    std::cout << "Character name [" << name << "] default destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
-		delete slot[i];
+        if (slot[i] != NULL)
+        {
+		    delete slot[i];
+            slot[i] = NULL;
+        }
 	}
 }
 
@@ -65,7 +79,6 @@ std::string const &Character::getName() const
 
 void Character::equip(AMateria *m)
 {
-    // m 를 floor에서 주웠다면 floor에서는 없애줘야 한다
     for (int i = 0; i < 4; i++)
     {
         if (slot[i] == NULL)
@@ -85,10 +98,21 @@ void Character::unequip(int idx)
     if (0 <= idx && idx <= 3)
     {
 		if (slot[idx] == NULL)
+        {
         	std::cout << "slot[" << idx << "]" << "is empty!" << std::endl;
+        }
 		else
-    	// slot[idx] 를 비우기 전에 floor 에 보관해둬야 한다
-			slot[idx] = NULL;
+        {
+            if (floorStorage < 10)
+            {
+                std::cout << "!!!!!!!!!!!!!!UNEQUIP SLOT[" << idx << "]:" << slot[idx]->getType() << " to floor[" << floorStorage<< "]!!!!!!!!!!!!!!!!" << std::endl;
+                floor[floorStorage] = slot[idx];
+                floorStorage += 1;
+			    slot[idx] = NULL;
+            }
+            else
+                std::cout << "Floor is full of Materias! Can't equip anymore!" << std::endl;
+        }
     }
 }
 
@@ -101,5 +125,18 @@ void Character::use(int idx, ICharacter &target)
     else
     {
         std::cout << "There isn't any Materia in that slot!" << std::endl;
+    }
+}
+
+void Character::clearFloor()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (floor[i] != NULL)
+        {
+            std::cout << "!!!!!!!!!!!!CLEAR FLOOR[" << i << "]:" << floor[i]->getType() << "!!!!!!!!!!!!!!!!!" << std::endl;
+            delete floor[i];
+            floor[i] = NULL;
+        }
     }
 }
