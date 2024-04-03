@@ -35,11 +35,6 @@ void WrongAnimal::makeSound() const
 	std::cout << "dnuos laminAgnorWWrongAnimal sound" << std::endl;
 }
 
-void WrongAnimal::setType(const std::string &type)
-{
-	this->type = type;
-}
-
 std::string WrongAnimal::getType() const
 {
 	return type;

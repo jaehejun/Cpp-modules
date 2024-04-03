@@ -35,11 +35,6 @@ void Animal::makeSound() const
 	std::cout << "Animal sound" << std::endl;
 }
 
-void Animal::setType(const std::string &type)
-{
-	this->type = type;
-}
-
 std::string Animal::getType() const
 {
 	return type;

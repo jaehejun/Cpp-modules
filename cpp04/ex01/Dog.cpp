@@ -26,29 +26,29 @@ Dog::~Dog()
     delete brain;
 }
 
-Dog &Dog::operator=(const Dog &other)
-{
-    std::cout << "Dog assignment operator called" << std::endl;
-    if (this != &other)
-    {
-        Animal::operator=(other);
-        delete brain;
-        brain = new Brain(*(other.brain));
-    }
-    return *this;
-}
-
-////얕은 복사 대입 연산자 오버로딩
 //Dog &Dog::operator=(const Dog &other)
 //{
-//    std::cout << "Dog SHALLOW copy assignment operator called" << std::endl;
+//    std::cout << "Dog assignment operator called" << std::endl;
 //    if (this != &other)
 //    {
 //        Animal::operator=(other);
-//        brain = other.brain;
+//        delete brain;
+//        brain = new Brain(*(other.brain));
 //    }
 //    return *this;
 //}
+
+//얕은 복사 대입 연산자 오버로딩
+Dog &Dog::operator=(const Dog &other)
+{
+    std::cout << "Dog SHALLOW copy assignment operator called" << std::endl;
+    if (this != &other)
+    {
+        Animal::operator=(other);
+        brain = other.brain;
+    }
+    return *this;
+}
 
 void Dog::makeSound() const
 {
