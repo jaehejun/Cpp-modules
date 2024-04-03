@@ -24,15 +24,10 @@ Character::Character(const Character &other) : name(other.name)
     std::cout << "Character copy constructor called" << std::endl;
     for (int i = 0; i < 4; i++)
     {
-        delete slot[i];
         slot[i] = NULL;
         if (other.slot[i])
         {
             slot[i] = other.slot[i]->clone();
-        }
-        else
-        {
-            slot[i] = NULL;
         }
     }
 }
@@ -42,11 +37,8 @@ Character::~Character()
     std::cout << "Character name [" << name << "] default destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
-        if (slot[i] != NULL)
-        {
-		    delete slot[i];
-            slot[i] = NULL;
-        }
+	    delete slot[i];
+        slot[i] = NULL;
 	}
 }
 
@@ -59,13 +51,10 @@ Character &Character::operator=(const Character &other)
     	for (int i = 0; i < 4; i++)
     	{
 			delete slot[i];
+            slot[i] = NULL;
 			if (other.slot[i])
 			{
 				slot[i] = other.slot[i]->clone();
-			}
-			else
-			{
-				slot[i] = NULL;
 			}
 	    }
 	}
@@ -79,16 +68,28 @@ std::string const &Character::getName() const
 
 void Character::equip(AMateria *m)
 {
+    if (!m)
+    {
+        std::cout << "Invalid Materia!" << std::endl;
+        return ;
+    }
+    if (m->getStatus() == true)
+    {
+        std::cout << "This Materia is already being equiped!" << std::endl;
+        return ;
+    }
     for (int i = 0; i < 4; i++)
     {
         if (slot[i] == NULL)
         {
             slot[i] = m;
+            std::cout << getName() << " Equip " << m->getType() << " in Slot[" << i << "]" << std::endl;
+            m->setStatus();
             break;
         }
         if (i == 3)
         {
-            std::cout << "slot is full!" << std::endl;
+            std::cout << getName() << "'s slot is full!" << std::endl;
         }
     }
 }
@@ -105,13 +106,13 @@ void Character::unequip(int idx)
         {
             if (floorStorage < 10)
             {
-                std::cout << "!!!!!!!!!!!!!!UNEQUIP SLOT[" << idx << "]:" << slot[idx]->getType() << " to floor[" << floorStorage<< "]!!!!!!!!!!!!!!!!" << std::endl;
+                std::cout << "Unequip Slot[" << idx << "]:" << slot[idx]->getType() << " to floor[" << floorStorage<< "]" << std::endl;
                 floor[floorStorage] = slot[idx];
                 floorStorage += 1;
 			    slot[idx] = NULL;
             }
             else
-                std::cout << "Floor is full of Materias! Can't equip anymore!" << std::endl;
+                std::cout << "Floor is full of Materias! Can't unequip anymore!" << std::endl;
         }
     }
 }
@@ -132,11 +133,7 @@ void Character::clearFloor()
 {
     for (int i = 0; i < 10; i++)
     {
-        if (floor[i] != NULL)
-        {
-            std::cout << "!!!!!!!!!!!!CLEAR FLOOR[" << i << "]:" << floor[i]->getType() << "!!!!!!!!!!!!!!!!!" << std::endl;
-            delete floor[i];
-            floor[i] = NULL;
-        }
+        delete floor[i];
+        floor[i] = NULL;
     }
 }

@@ -3,100 +3,62 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "MateriaSource.hpp"
+#include <cstdlib>
 
-//int main()
-//{
-//	AMateria *a = new Ice();
-//	AMateria *b = new Cure();
-
-//	Character j("jay");
-//	Character h("hyung");
-
-//	j.equip(a);
-//	j.equip(b);
-
-//	j.use(0, h);
-//	j.use(1, h);
-
-//	delete a;
-//	delete b;
-//}
+void leakCheck()
+{
+	system("leaks AMateria");
+}
 
 int main()
 {
+	atexit(leakCheck);
+
 	IMateriaSource* src = new MateriaSource();
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	src->learnMateria(new Ice());
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	src->learnMateria(new Cure());
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+
+	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	AMateria* tmp;
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	tmp = src->createMateria("ice");
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	me->equip(tmp);
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	tmp = src->createMateria("cure");
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	me->equip(tmp);
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	delete tmp;
+
 	ICharacter* bob = new Character("bob");
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	me->use(0, *bob);
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	me->use(1, *bob);
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
+	me->use(2, *bob);
+	me->use(3, *bob);
 
+	me->unequip(0);
+	me->unequip(1);
 
-	//Character sam("sam");
-	//sam.equip(tmp);
-	//Character jay("jay");
-	//jay = sam;
-	//jay.use(0, *bob);
+	tmp = src->createMateria("fire");
+	tmp = src->createMateria("cure");
+	bob->equip(tmp);
+	bob->use(0, *me);
+	bob->unequip(0);
 
-	//sam = jay;
-	//sam.use(0, *me);
-
-	//me->unequip(0);
-	//me->unequip(1);
-
-	//me->use(1, *bob);
-	//me->equip(tmp);
-
+	me->equip(tmp);
 
 	delete bob;
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	delete me;
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
 	delete src;
-	std::cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << std::endl;
+	std::cout << "@@@@@@@@@@@@@@@@CLEARING THE FLOOR@@@@@@@@@@@@@@@@@" << std::endl;
 	Character::clearFloor();
+
 	return 0;
 }
-
-//int main()
-//{
-//	AMateria *ice;
-//	AMateria *ice2;
-//	AMateria *cure;
-//	AMateria *cure2;
-//	ice = new Ice();
-//	cure = new Cure();
-
-//	ice2 = ice->clone();
-//	cure2 = cure->clone();
-
-//	*ice = *cure;
-//	*cure = *ice;
-//	std::cout << "ICE TYPE : " << ice->getType() << std::endl;
-//	std::cout << "CURE TYPE : " << cure->getType() << std::endl;
-//	std::cout << "ICE2 TYPE : " << ice2->getType() << std::endl;
-//	std::cout << "CURE2 TYPE : " << cure2->getType() << std::endl;
-
-//	delete ice;
-//	delete ice2;
-//	delete cure;
-//	delete cure2;
-//}

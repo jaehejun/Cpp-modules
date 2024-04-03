@@ -15,17 +15,22 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 	std::cout << "MateriaSource copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
+		materia[i] = NULL;
 		if (other.materia[i])
 		{
 			materia[i] = other.materia[i]->clone();
 		}
-		materia[i] = NULL;
 	}
 }
 
 MateriaSource::~MateriaSource()
 {
 	std::cout << "MateriaSource destructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		delete materia[i];
+		materia[i] = NULL;
+	}
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &other)
@@ -35,7 +40,9 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (other.materia[i])
+			delete materia[i];
+			materia[i] = NULL;
+			if (other.materia[i] != NULL)
 			{
 				materia[i] = other.materia[i]->clone();
 			}
@@ -50,38 +57,28 @@ void MateriaSource::learnMateria(AMateria *m)
 	{
 		if (materia[i] == NULL)
 		{
-			std::cout << "#############MATERIA[" << i << "]" << "is NULL############" << std::endl;
-			materia[i] = m->clone();
+			std::cout << "Learn [" << m->getType() << "] Materia!" << std::endl;
+			materia[i] = m;
 			break;
 		}
 		if (i == 3)
 		{
 			std::cout << "Can't know more than 4 Materias!" << std::endl;
+			delete m;
 		}
 	}
 }
 
 AMateria *MateriaSource::createMateria(std::string const &type)
 {
-	std::cout << "@@@@@@@@@CREATE MATERIA CALLED@@@@@@@@@@@@" << std::endl;
-	if (type != "ice" && type != "cure")
+	for (int i = 0; i < 4; i++)
 	{
-		std::cout << "Unknown type!" << std::endl;
-		return 0;
-	}
-	for (int i = 3; i >= 0; i--)
-	{
-		std::cout << "@@@@@@@@@MATERIA[" << i << "]:" << materia[i] << "@@@@@@@@@@@@" << std::endl;
 		if (materia[i] && materia[i]->getType() == type)
 		{
-			std::cout << "@@@@@@@@@MATERIA[" << i << "]:" << materia[i]->getType() << "@@@@@@@@@@@@" << std::endl;
+			std::cout << "Create [" << materia[i]->getType() << "] Materia!" << std::endl;
 			return materia[i]->clone();
 		}
-		if (i == 0)
-		{
-			std::cout << "There isn't any of " << type << " Materia" << std::endl;
-			return 0;
-		}
 	}
+	std::cout << "Unkown Type!" << std::endl;
 	return 0;
 }

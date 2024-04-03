@@ -10,6 +10,7 @@ class AMateria
 	protected:
 		std::string type;
 		AMateria();
+		bool isEquiped;
 
 	public:
 		AMateria(std::string const &type);
@@ -22,6 +23,8 @@ class AMateria
 		
 		virtual AMateria *clone() const = 0;
 		virtual void use(ICharacter &target);
+		bool getStatus() const;
+		void setStatus();
 };
 
 #endif
