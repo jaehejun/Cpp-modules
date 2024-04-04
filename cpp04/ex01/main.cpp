@@ -41,26 +41,35 @@ int main()
 
     std::cout << "@@@@@@@@@@@@@@@ More Tests @@@@@@@@@@@@@@@@" << std::endl;
 
-    Dog *a = new Dog();
-    a->setIdea("hello");
-    a->setIdea("bye");
-    a->getIdeas();
+    Dog *og = new Dog();
+    og->setIdea("hello");
+    og->setIdea("bye");
+    std::cout << "@@@@@@@@@@@@@@@ OG's brain @@@@@@@@@@@@@@@@" << std::endl;
+    og->getIdeas();
     
-    Dog *copy = new Dog(*a);
+    Dog *copy = new Dog(*og);
     copy->setIdea("COPIED!");
+    std::cout << "@@@@@@@@@@@@@@@ COPY's brain @@@@@@@@@@@@@@@@" << std::endl;
     copy->getIdeas();
+
+    std::cout << "@@@@@@@@@@@@@@@ OG after Copy @@@@@@@@@@@@@@@@" << std::endl;
+    og->getIdeas();
 
     Dog *assign = new Dog();
     assign->setIdea("ASSIGNED!");
-    assign->getIdeas();
-    *assign = *copy;
+    std::cout << "@@@@@@@@@@@@@@@ ASSIGN's brain @@@@@@@@@@@@@@@@" << std::endl;
     assign->getIdeas();
 
-    delete a;
+    *assign = *copy;
+    assign->setIdea("Deep copy shouldn't share this idea");
+    std::cout << "@@@@@@@@@@@@@@@ COPY after assign setIdea() @@@@@@@@@@@@@@@@" << std::endl;
+    copy->getIdeas();
+    std::cout << "@@@@@@@@@@@@@@@ ASSIGN after assign setIdea() @@@@@@@@@@@@@@@@" << std::endl;
+    assign->getIdeas();
+
+    delete og;
     delete copy;
     delete assign;
-
-    std::cout << "@@@@@@@@@@@ORIGINAL@@@@@@@@@@@" << std::endl;
 
     return 0;
 }

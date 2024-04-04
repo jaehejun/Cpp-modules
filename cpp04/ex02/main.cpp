@@ -2,9 +2,16 @@
 #include "Brain.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include <cstdlib>
+
+void leakCheck()
+{
+    system("leaks Abstract");
+}
 
 int main()
 {
+    atexit(leakCheck);
     //Animal a;
     Dog dog;
     Cat cat;

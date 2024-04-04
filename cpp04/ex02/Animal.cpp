@@ -30,11 +30,6 @@ Animal &Animal::operator=(const Animal &other)
 	return *this;
 }
 
-void Animal::setType(const std::string &type)
-{
-	this->type = type;
-}
-
 std::string Animal::getType() const
 {
 	return type;

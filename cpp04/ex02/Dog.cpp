@@ -41,7 +41,7 @@ Dog &Dog::operator=(const Dog &other)
 ////얕은 복사 대입 연산자 오버로딩
 //Dog &Dog::operator=(const Dog &other)
 //{
-//    std::cout << "Dog SHALLOW copy assignment operator called" << std::endl;
+//    std::cout << "Dog SHALLOW assignment operator called" << std::endl;
 //    if (this != &other)
 //    {
 //        Animal::operator=(other);
